@@ -514,19 +514,19 @@ const projectModalData = {
     repoLink: "https://github.com/rriakang/graduate_project",
     slides: [
       {
-        img: "/img/smarthome1.png",
+        img: "/img/projects/smarthome1.png",
         alt: "IoT smart home overview",
       },
       {
-        img: "/img/smarthome2.png",
+        img: "/img/projects/smarthome2.png",
         alt: "IoT admin web",
       },
       {
-        img: "/img/smarthome3.png",
+        img: "/img/projects/smarthome3.png",
         alt: "IoT mobile app",
       },
       {
-        img: "/img/smarthome4.png",
+        img: "/img/projects/smarthome4.png",
         alt: "IoT system screen",
       },
     ],
