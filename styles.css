@@ -283,6 +283,10 @@ img{ max-width: 100%; display:block; }
   color: var(--muted2);
   flex: 0 0 auto;
 }
+.paperDetail .iconInline{
+  width: 24px;
+  height: 24px;
+}
 .githubIcon{ color: var(--github); }
 .linkedinIcon{ color: var(--linkedin); }
 .iconLabel{
@@ -455,7 +459,16 @@ h3{
 }
 .card p{ margin: 8px 0 0; color: var(--muted); }
 .paperDetail .card p{ margin: 12px 0 0; }
-.paperDetail .summaryBlock h3{ margin-top: 18px; }
+.paperDetail .summaryBlock p.muted{
+  margin: 14px 0 0;
+  font-size: 18px;
+}
+.paperDetail .summaryBlock .bullets{ margin: 12px 0 0; }
+.paperDetail .summaryBlock h3{
+  margin-top: 34px;
+  font-size: 24px;
+  line-height: 1.25;
+}
 .paperDetail .summaryBlock h3:first-child{ margin-top: 0; }
 #values .card p{ white-space: pre-line; }
 
