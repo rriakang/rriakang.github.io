@@ -818,17 +818,7 @@ h3{
   font-size: 14px;
   font-weight: 600;
 }
-.paperAbstract{
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.45;
-  display: none;
-}
-.paperAbstract.is-visible{
-  display: block;
-}
-.paperToggle{
+.paperSummaryLink{
   align-self: flex-start;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -837,23 +827,15 @@ h3{
   font-size: 13px;
   font-weight: 600;
   color: var(--accent2);
-  cursor: pointer;
+  text-decoration: none;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
   margin-top: 4px;
 }
-.paperToggle::before{
-  content: "+";
-  margin-right: 6px;
-  font-size: 16px;
-}
-.paperToggle.is-open::before{
-  content: "−";
-}
-.paperToggle:hover{
+.paperSummaryLink:hover{
   background: var(--surface2);
   border-color: var(--border2);
 }
-.paperToggle:focus-visible{
+.paperSummaryLink:focus-visible{
   outline: none;
   box-shadow: 0 0 0 3px var(--ring);
 }

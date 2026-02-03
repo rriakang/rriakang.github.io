@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>논문 요약 | Wearable-based symptom prediction</title>
+  <meta name="description" content="웨어러블 기반 증상 예측 논문 요약 (준비중)" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar" role="banner" aria-label="Summary navigation">
+      <a class="brand" href="/index.html#papers">← 논문 목록으로</a>
+    </header>
+    <main class="main" role="main">
+      <section class="section" aria-label="Paper summary">
+        <div class="sectionHeader">
+          <div class="sectionTitle">
+            <svg class="iconInline" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 4h7l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M14 4v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            <h2>Comprehensive Symptom Prediction in Inpatients With Acute Psychiatric Disorders Using Wearable-Based Deep Learning Models</h2>
+          </div>
+        </div>
+        <div class="card">
+          <h3>서론</h3>
+          <p class="muted">
+            급성 정신과 입원 병동에서는 환자의 증상(예: psychosis, mania, severe depression)이 빠르게 변하고,
+            환자 스스로 증상을 정확히 보고하기 어려운 경우가 많아(Insight 저하, 인지 저하 등)
+            정기적인 임상 평가만으로는 상태 변화를 촘촘히 따라가기 어렵습니다. 또한 병동 스태프는 높은 업무 강도와
+            burnout 위험에 노출돼 있어, 연속적·객관적 데이터로 임상 의사결정을 보조하는
+            Clinical Decision Support의 필요성이 큽니다.
+          </p>
+          <p class="muted">
+            이 논문은 이런 문제의식에서 출발해, 손목형 웨어러블로 얻는
+            <strong>wearable sensor data(heart rate, accelerometer, location)</strong>를 활용해
+            급성 정신과 병동 환자의 증상을 포괄적으로(comprehensive) 예측하는 deep learning 모델을 개발·검증합니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>본론 1) 데이터/세팅: 다기관·다병동, 반복 평가 기반 “증상 예측” 문제 정의</h3>
+          <p class="muted">
+            연구는 3개 병원, 4개 병동에서 조현병(schizophrenia) 및 기분장애(mood disorders) 환자를 전향적으로 모집해
+            입원 기간 동안 웨어러블 데이터를 수집했고, 훈련된 평가자가 다음 임상 척도를 반복 측정했습니다:
+            BPRS, HAM-A, MADRS, YMRS.
+          </p>
+          <p class="muted">
+            전체 <strong>244명 등록 중 191명(총 3954 person-days)</strong>이 최종 분석에 포함됐고,
+            2024년 5월 1일 이전 모집자는 cross-validation, 이후 모집자는 external validation(시간 분할 방식)에 사용했습니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>본론 2) 모델링 전략: “Single vs Multi(멀티태스크)” × “Deterioration vs Score”</h3>
+          <p class="muted">
+            이 논문의 설계가 포트폴리오에서 가장 매력적인 포인트는, 단순히 한 가지 목표를 맞추는 게 아니라
+            2개의 예측 관점을 분리해 모델을 만든 점입니다.
+          </p>
+          <ul class="bullets">
+            <li>Single: 증상(또는 척도)을 개별적으로 예측</li>
+            <li>Multi: 여러 증상을 동시에 예측(멀티태스크)</li>
+            <li>Deterioration: 같은 환자 내 “악화/변화(상대적 변화)” 분류</li>
+            <li>Score: 환자 간 “절대적 중증도(점수)” 예측</li>
+          </ul>
+          <p class="muted">
+            그래서 각 척도마다 Single-Deterioration / Single-Score / Multi-Deterioration / Multi-Score
+            총 4개 구성으로 실험합니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>본론 3) 결과: 악화 분류는 준수, 점수 예측은 Multi가 더 강함</h3>
+          <p class="muted">
+            핵심 성능은 초록에서 다음처럼 요약됩니다.
+          </p>
+          <ul class="bullets">
+            <li>Deterioration(악화 분류): Accuracy ≈ 0.75 (cross-validation), 0.73 (external validation)</li>
+            <li>Single/Multi 성능은 비슷한 수준</li>
+            <li>Score 예측: R² ≈ 0.78(Single) / 0.83(Multi) (cross-validation)</li>
+            <li>Score 예측: R² ≈ 0.66(Single) / 0.74(Multi) (external validation)</li>
+          </ul>
+          <p class="muted">
+            특히 Multi-Score가 더 좋은 성능을 보임(동일 데이터 대비 계산 비용이 낮거나 비슷한데 성능이 동등/우수하다는 메시지)
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>본론 4) 해석/적용 관점: generalizability가 “현장 적용의 병목”</h3>
+          <p class="muted">
+            다기관/다병동 데이터에서 <strong>기관·병동 간 분포 차이(interward variations)</strong>가 크다는 점을 강조하고,
+            이것이 AI-CDSS로 확장될 때 generalizability의 주요 장애가 된다고 명시합니다.
+            이를 해결하기 위한 방향으로 recurring local validation(현장 맞춤 재검증/보정) 또는
+            federated learning 같은 접근을 제안합니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>결론</h3>
+          <p class="muted">
+            이 연구는 웨어러블 기반 digital phenotyping 데이터를 활용해 급성 정신과 병동 환자의 증상을
+            “악화(deterioration) 분류”와 “중증도(score) 예측”으로 나누어 다면적으로 모델링했고,
+            <strong>Multitask learning(Multi)</strong>이 특히 점수 예측에서 더 균형 잡힌 성능을 낼 수 있음을 보여줍니다
+            (외부 검증 R² 0.74까지).
+          </p>
+          <p class="muted">
+            동시에 병동 간 차이로 인한 generalizability 문제가 뚜렷해, 실제 임상 적용을 위해서는
+            현장별 재검증/보정 또는 federated learning 같은 운영 전략이 필수라는 실무적 결론까지 연결합니다.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
