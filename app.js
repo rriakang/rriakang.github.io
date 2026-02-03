@@ -531,7 +531,7 @@ const projectModalData = {
       },
     ],
   },
-    "risk-monitor-platform": {
+  "risk-monitor-platform": {
     title: "웨어러블·임상 데이터 기반 정신증상/자·타해 위험 모니터링 플랫폼 연동",
     summary:
       "정부 지원 과제의 일환으로 웨어러블 데이터와 임상 정보를 통합 수집·정제하고, 이를 기반으로 정신증상 악화 및 자·타해 위험을 예측/모니터링하여 의료진에게 제공하는 시스템을 목표로 수행했습니다.",
