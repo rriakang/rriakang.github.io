@@ -531,20 +531,20 @@ const projectModalData = {
       },
     ],
   },
-  "risk-monitor-platform": {
-    title: "웨어러블·임상 통합 정신증상/자타해 위험 모니터링 플랫폼",
+    "risk-monitor-platform": {
+    title: "웨어러블·임상 데이터 기반 정신증상/자·타해 위험 모니터링 플랫폼 연동",
     summary:
-      "정부 지원 과제의 일환으로 웨어러블 디바이스와 임상 정보를 통합 수집하고, 이를 기반으로 정신증상 및 자타해 위험을 모니터링하고 알리는 플랫폼 구축을 목표로 하였습니다.",
-    role: "자타해 예측 모델과 환자 증상 예측 모델을 구축하여 FastAPI와 PyPI 라이브러리 등록으로 모기업이 구축한 플랫폼과 연동했습니다.",
+      "정부 지원 과제의 일환으로 웨어러블 데이터와 임상 정보를 통합 수집·정제하고, 이를 기반으로 정신증상 악화 및 자·타해 위험을 예측/모니터링하여 의료진에게 제공하는 시스템을 목표로 수행했습니다.",
+    role: "정신증상 악화 예측 모델과 자·타해 위험 예측 모델을 개발하고, Flask 기반 Inference API 및 PyPI 패키지 형태로 배포해 모기업 플랫폼과 연동을 완료했습니다.",
     background:
-      "정부 지원 과제의 일환으로 웨어러블 디바이스와 임상 정보를 통합 수집하고, 이를 기반으로 정신증상 및 자타해 위험을 모니터링하고 알리는 플랫폼 구축을 목표로 하였습니다.",
+      "상용 환경에서 활용 가능한 형태로 예측 결과를 제공하기 위해 백엔드와 API 명세·JSON 스키마을 정의하고, 플랫폼에서 신규 환자 데이터로 예측을 호출·출력하는 흐름을 설계했습니다.",
     highlights: [
-      "웨어러블·임상 정보 통합 수집 파이프라인 구성",
-      "정신증상,자타해 위험 모니터링 및 알림 흐름 정의",
-      "FastAPI 기반 서비스화 및 PyPI 라이브러리 등록",
-      "플랫폼과 API 연동",
+      "웨어러블 데이터·임상 변수 통합 전처리 및 학습 데이터셋 구성",
+      "정신증상 악화 및 자·타해 위험 예측·모니터링·알림 흐름 정의",
+      "Flask 기반 Inference API 서비스화 및 PyPI 패키지 배포",
+      "플랫폼 연동을 위한 API 명세 및 JSON 스키마 정의",
     ],
-    tech: "Python, FastAPI, PyPI, REST API, Wearable, Clinical Data",
+    tech: "Python, Flask, PyPI, REST API, JSON Schema, Wearable Data, Clinical Variables",
     slides: [
       {
         img: "/img/projects/platform-1.png",
