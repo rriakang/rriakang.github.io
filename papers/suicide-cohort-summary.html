@@ -44,7 +44,11 @@
           <h3>본론 2. 모델링: 각 머신러닝들끼리 비교 </h3>
           <p class="muted">
             예측 목적을 단기(ex.3개월), 중기(ex. 1년), 장기로 나눴기 때문에 모델도 그에 맞게 설계하였다.
+          </p>
+          <p class="muted">
             단기·중기는 “해당 기간 안에 자살시도가 발생할까?”를 맞추는 문제라서 Logistic Regression로 예측했다.
+          </p>
+          <p class="muted">
             장기는 “언제 자살시도가 발생할까,발생 시점”까지 고려해야 하므로, 사건 발생 시간을 반영하는 Cox proportional hazards model을 사용했다.
           </p>
           <p class="muted">
