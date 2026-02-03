@@ -460,13 +460,13 @@ h3{
 .card p{ margin: 8px 0 0; color: var(--muted); }
 .paperDetail .card p{ margin: 12px 0 0; }
 .paperDetail .summaryBlock p.muted{
-  margin: 14px 0 0;
-  font-size: 18px;
+  margin: 12px 0 0;
+  font-size: 16px;
 }
 .paperDetail .summaryBlock .bullets{ margin: 12px 0 0; }
 .paperDetail .summaryBlock h3{
-  margin-top: 34px;
-  font-size: 24px;
+  margin-top: 28px;
+  font-size: 21px;
   line-height: 1.25;
 }
 .paperDetail .summaryBlock h3:first-child{ margin-top: 0; }
