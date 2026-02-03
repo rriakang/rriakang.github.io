@@ -28,47 +28,46 @@
         <div class="card">
           <h3>서론</h3>
           <p class="muted">
-            정신과 폐쇄병동에서는 자살, 자해(self-harm), 공격성(aggression) 등 위험 행동을 조기에 감지하고
+            정신과 폐쇄병동에서는 자살, 자해, 공격성과 같은 위험 행동을 조기에 감지하고
             개입하는 것이 환자와 의료진 안전에 직결된다. 그러나 현장에서는 높은 업무 강도와 인력 제약으로 인해
             위험 징후를 실시간으로 포착해 선제적으로 대응하기 어렵다. 기존 예측 접근은 주로 인구통계 및 기본
-            임상 정보에 의존해 병동 내에서 시시각각 변화하는 상태를 충분히 반영하지 못한다.
+            임상 정보에 의존해 병동 내에서 시시각각 변화하는 상태를 실시간으로 충분히 반영하지 못하였으며, 정신병동 내에서의 위험 행동을 조기에 감지하는 논문은 존재하지않았다.
           </p>
           <p class="muted">
-            본 연구는 이러한 한계를 해결하기 위해 <strong>웨어러블 센서 데이터 + 위치(location) + 임상 정보(clinical data)</strong>를
+            본 연구는 이러한 한계를 해결하기 위해 <strong>웨어러블 센서 데이터 + 위치 + 환자의 임상 정보 </strong>를
             통합한 multimodal 기반의 real-time risk prediction 모델을 제안하고, 정신과 병동 환경에서의 실효성을 검증한다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 1) 데이터 구성 및 문제 정의</h3>
+          <h3>본론 1. 데이터 구성 및 문제 정의</h3>
           <p class="muted">
-            연구팀은 3개 병원에서 145명 환자의 데이터를 수집했다. 웨어러블 디바이스를 통해 심박(heart rate),
-            움직임(movement), 위치(location) 정보를 확보했으며, 데이터는 <strong>시간 단위(hourly)로 집계(aggregation)</strong>한 뒤
-            결측치 처리 및 표준화(standardization) 등 전처리를 수행했다. 예측 과제는 병동 내 유해 행동(harmful behaviors)
-            발생을 예측하는 binary classification으로 정의했다.
+            3개 병원에서 145명 환자의 데이터를 수집했다. 웨어러블 디바이스를 통해 심박 수 ,
+            움직임, 위치 정보를 확보했으며, 데이터는 <strong>시간 단위로 aggregation</strong>한 뒤
+            결측치 처리 및 정규화 등 전처리를 수행했다. 예측 결과는 병동 내 위험 행동발생을 예측하는 binary classification으로 정의했다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 2) 모델링: Temporal Fusion Transformer (TFT) 선택 이유</h3>
+          <h3>본론 2. 모델링: Temporal Fusion Transformer 선택 이유</h3>
           <p class="muted">
-            본 연구의 핵심은 <strong>Temporal Fusion Transformer (TFT)</strong>를 적용했다는 점이다. TFT는 시계열(time-series)
-            데이터와 정적(static) 정보를 구조적으로 다루며,
+            본 연구의 핵심은 <strong>Temporal Fusion Transformer, TFT 알고리즘</strong>을 적용했다는 점이다. TFT는 time-series
+            데이터와 정적인 데이터를 구조적으로 다루며,
           </p>
           <ul class="bullets">
-            <li>Variable Selection Networks(VSN)로 중요한 변수를 선택하고</li>
-            <li>temporal attention으로 시간 의존 패턴을 포착할 수 있어</li>
+            <li>Variable Selection Networks 레이어로 중요한 변수를 선택하고</li>
+            <li>temporal attention으로 시계열 패턴을 포착할 수 있어</li>
           </ul>
           <p class="muted">
-            병동처럼 다양한 신호가 동시에 발생하는 환경에서 “복합 상호작용”을 학습하는 데 적합하다고 설명한다.
+            다변량 시계열이 동시 입력되는 환경에서, 센서·위치·임상 변수의 결합 패턴을 학습하기에 적합하다.
             또한 Bayesian optimization으로 하이퍼파라미터를 튜닝하고, 5-fold cross-validation으로 일반화 성능을 평가했다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 3) 결과 및 해석 가능성(interpretability)</h3>
+          <h3>본론 3. 결과 및 해석 가능성</h3>
           <p class="muted">
-            TFT는 비교 모델(Multi-LSTM, Multi-GRU) 대비 우수한 성능을 보였고, 초록에 제시된 지표는 다음과 같다:
+            TFT는 비교 모델, [Multi-LSTM, Multi-GRU] 대비 우수한 성능을 보였고,제시된 지표는 다음과 같다:
           </p>
           <ul class="bullets">
             <li>Accuracy 95.1%</li>
@@ -77,8 +76,8 @@
             <li>AUC 0.863</li>
           </ul>
           <p class="muted">
-            또한 VSN을 통해 예측에 기여한 요인을 해석 가능하게 제시했으며, 예로 daily entropy,
-            heart rate variability(HRV) 등이 핵심 예측 요인으로 언급된다. 이는 단순한 예측 정확도뿐 아니라,
+            또한 VSN을 통하여 예측에 기여한 요인을 해석 가능하게 제시했으며, 예로 daily entropy,
+            heart rate variability(HRV)과 같은 변수들이 핵심 예측 요인으로 나왔다. 이는 단순한 예측 정확도뿐 아니라,
             임상 현장에서 “왜 위험하다고 판단했는지”를 설명할 단서를 제공한다는 점에서 의미가 있다.
           </p>
         </div>
@@ -86,13 +85,12 @@
         <div class="card">
           <h3>결론</h3>
           <p class="muted">
-            본 연구는 정신과 병동에서 유해 행동을 예측하기 위해 TFT 기반 multimodal real-time prediction을 적용한 사례로,
+            본 연구는 정신과 병동에서 유해 행동을 예측하기 위해 Temporal Fusion Transformer 기반 multimodal real-time prediction을 적용한 사례로,
             센서·위치·임상 정보를 통합했을 때 실시간 위험도 평가가 가능해지고 예측 성능이 개선될 수 있음을 보였다.
             또한 VSN 기반 해석을 통해 임상적 활용 가능성을 높였다.
           </p>
           <p class="muted">
-            다만 초록에서도 언급하듯 데이터 규모가 제한적이어서 recall 향상은 향후 과제로 남아 있으며,
-            후속 연구로 <strong>multimodal Common Data Model(CDM)</strong>을 통한 표준화와 데이터 확장이 제안된다.
+            다만 초록에서도 언급하듯 데이터 규모가 제한적이어서 recall 향상은 향후 과제로 남아 있다.
           </p>
         </div>
       </section>
