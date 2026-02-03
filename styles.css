@@ -985,6 +985,42 @@ h3{
   background: var(--surface2);
 }
 
+/* === paper abstract (논문 요약) 스타일 추가 === */
+.paperAbstract {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  color: rgba(0,0,0,0.6); /* muted color; 다크테마에선 필요시 조정 */
+  font-size: 0.95rem;
+  line-height: 1.45;
+  max-width: 60ch;
+}
+
+/* summary 내부의 정렬/간격 보정 (요약 + 다운로드 버튼이 같은 줄에 겹치지 않도록) */
+.paperSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* 다운로드 아이콘 위치 고정 (기존 스타일에 영향이 없도록 우측 상단에 유지) */
+.paperDownload {
+  justify-self: end;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.35rem;
+}
+
+/* 반응형: 좁은 화면에서는 요약 글자 크기 약간 축소 */
+@media (max-width: 640px) {
+  .paperAbstract {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 980px){
   .heroGrid{ grid-template-columns: 1fr; }
   .profileGrid{ grid-template-columns: 1fr; }
