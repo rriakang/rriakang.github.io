@@ -656,20 +656,23 @@ h3{
   padding: 16px 18px;
   box-shadow: var(--shadow2);
 }
-.paperItem[open]{ box-shadow: var(--shadow); }
 .paperSummary{
   list-style: none;
-  cursor: pointer;
+  cursor: default;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.2px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  column-gap: 6px;
+  width: 100%;
+  text-align: left;
 }
 .paperTitle{
-  flex: 1;
+  display: block;
   min-width: 0;
+  line-height: 1.4;
 }
 .paperDownload{
   width: 32px;
@@ -683,6 +686,8 @@ h3{
   color: var(--text);
   flex: 0 0 auto;
   text-decoration: none;
+  margin-left: 0;
+  align-self: start;
 }
 .paperDownload:hover{
   border-color: var(--accent2);
@@ -799,17 +804,58 @@ h3{
   top: -12px;
   right: -12px;
 }
-.paperSummary::-webkit-details-marker{ display: none; }
 .paperBody{
   margin-top: 12px;
   border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
   padding-top: 12px;
   color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .paperJournal{
   color: var(--text);
   font-size: 14px;
   font-weight: 600;
+}
+.paperAbstract{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  display: none;
+}
+.paperAbstract.is-visible{
+  display: block;
+}
+.paperToggle{
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent2);
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+  margin-top: 4px;
+}
+.paperToggle::before{
+  content: "+";
+  margin-right: 6px;
+  font-size: 16px;
+}
+.paperToggle.is-open::before{
+  content: "−";
+}
+.paperToggle:hover{
+  background: var(--surface2);
+  border-color: var(--border2);
+}
+.paperToggle:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
 }
 .paperDesc{
   margin: 8px 0 0;
@@ -985,33 +1031,6 @@ h3{
   background: var(--surface2);
 }
 
-/* === paper abstract (논문 요약) 스타일 추가 === */
-.paperAbstract {
-  margin-top: 0.35rem;
-  margin-bottom: 0.35rem;
-  color: rgba(0,0,0,0.6); /* muted color; 다크테마에선 필요시 조정 */
-  font-size: 0.95rem;
-  line-height: 1.45;
-  max-width: 60ch;
-}
-
-/* summary 내부의 정렬/간격 보정 (요약 + 다운로드 버튼이 같은 줄에 겹치지 않도록) */
-.paperSummary {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-/* 다운로드 아이콘 위치 고정 (기존 스타일에 영향이 없도록 우측 상단에 유지) */
-.paperDownload {
-  justify-self: end;
-  width: 2.2rem;
-  height: 2.2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 0.35rem;
-}
 
 /* 반응형: 좁은 화면에서는 요약 글자 크기 약간 축소 */
 @media (max-width: 640px) {

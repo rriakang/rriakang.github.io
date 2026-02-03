@@ -151,6 +151,16 @@ const I18N = {
     paper_journal_2: "Asian Journal of Psychiatry · 제1저자 (공동1저자)",
     paper_journal_3: "JMIR · 제2저자",
     paper_journal_4: "한국융합기술학회 · 제1저자",
+    paper_abstract_1:
+      "정신과 병동의 위치·센서·환자 정보를 결합해 행동 위험을 실시간 개인화 예측하고 임상 대응에 필요한 판단 근거를 제공합니다.",
+    paper_abstract_2:
+      "한국 전향 코호트를 기반으로 단기·중기·장기 자살시도 예측 모델을 분리 학습하고 통계/ML 모델과 비교함으로써 호라이즌별 정밀도를 확보했습니다.",
+    paper_abstract_3:
+      "입원 환자의 웨어러블 신호를 CNN-GRU 멀티태스크로 학습해 증상 악화와 중증도 변화를 동시에 추적하며 대응 타이밍을 제안합니다.",
+    paper_abstract_4:
+      "증례지 서술과 생체 신호를 LSTM 멀티모달로 통합해 자타해 위험을 정량화하고 임상적으로 설명 가능한 결과를 도출했습니다.",
+    paper_toggle_show: "요약 보기",
+    paper_toggle_hide: "요약 닫기",
     footer_text: "근거 중심으로 결과를 설명하는 포트폴리오.",
     modal_project_label: "Project",
     modal_role_title: "역할",
@@ -245,6 +255,16 @@ const I18N = {
     paper_journal_2: "Asian Journal of Psychiatry · First author (co-first)",
     paper_journal_3: "JMIR · Second author",
     paper_journal_4: "Korean Society of Convergence Technology · First author",
+    paper_abstract_1:
+      "Fuses location, sensor, and patient data in psychiatric wards to personalize real-time risk predictions and surface actionable alerts.",
+    paper_abstract_2:
+      "Builds short-, medium-, and long-term suicide attempt models from a Korean prospective cohort and benchmarks them against statistical and ML baselines for each horizon.",
+    paper_abstract_3:
+      "Trains a wearable-based CNN-GRU multi-task model to jointly forecast deterioration and severity shifts for inpatients using fine-grained signals.",
+    paper_abstract_4:
+      "Combines case reports and physiological signals through an LSTM-based multimodal model to estimate self-/other-harm risk with interpretability.",
+    paper_toggle_show: "Show summary",
+    paper_toggle_hide: "Hide summary",
     footer_text: "Explaining outcomes with evidence.",
     modal_project_label: "Project",
     modal_role_title: "Role",
@@ -321,6 +341,16 @@ const I18N = {
     paper_journal_2: "Asian Journal of Psychiatry · 第一作者（共同第一作者）",
     paper_journal_3: "JMIR · 第二作者",
     paper_journal_4: "韩国融合技术学会 · 第一作者",
+    paper_abstract_1:
+      "在精神病房融合位置、传感器与患者数据，实现个性化的实时风险预测并为行为管理提供支撑。",
+    paper_abstract_2:
+      "基于韩国前瞻性队列分别训练短期、中期、长期自杀未遂模型，并与统计和机器学习方法比较各时段表现。",
+    paper_abstract_3:
+      "通过可穿戴信号训练 CNN-GRU 多任务模型，同时预测症状恶化与严重度变化，为护理介入争取时间。",
+    paper_abstract_4:
+      "将病例报告与生理信号通过 LSTM 多模态模型融合，估计自伤/他伤风险并提供可解释性信息。",
+    paper_toggle_show: "查看摘要",
+    paper_toggle_hide: "隐藏摘要",
     modal_project_label: "项目",
     modal_role_title: "角色",
     modal_background_title: "背景",
@@ -398,6 +428,16 @@ const I18N = {
     paper_journal_2: "Asian Journal of Psychiatry · 第一著者（共同第一著者）",
     paper_journal_3: "JMIR · 第二著者",
     paper_journal_4: "韓国融合技術学会 · 第一著者",
+    paper_abstract_1:
+      "精神科病棟で位置・センサー・患者情報を統合し、行動リスクを個別にリアルタイム予測して対応を支援します。",
+    paper_abstract_2:
+      "韓国の前向きコホートから短期・中期・長期の自殺未遂モデルを分けて学習し、統計/機械学習と比較してホライズン別性能を検証しました。",
+    paper_abstract_3:
+      "入院患者のウェアラブルデータで CNN-GRU マルチタスクモデルを訓練し、症状悪化と重症度推移を同時に予測します。",
+    paper_abstract_4:
+      "症例報告と生体信号を LSTM マルチモーダルで融合し、自他傷リスクを解釈可能な形で提示します。",
+    paper_toggle_show: "要約を見る",
+    paper_toggle_hide: "要約を閉じる",
     modal_project_label: "プロジェクト",
     modal_role_title: "役割",
     modal_background_title: "背景",
@@ -466,6 +506,34 @@ function applyI18n(lang) {
   if (activeProjectId && projectModal && projectModal.classList.contains("open")) {
     openProjectModal(activeProjectId);
   }
+  updatePaperToggleButtons();
+}
+
+function updatePaperToggleButtons() {
+  const showLabel = getI18nValue("paper_toggle_show") || "요약 보기";
+  const hideLabel = getI18nValue("paper_toggle_hide") || "요약 닫기";
+  $$(".paperToggle").forEach((btn) => {
+    const body = btn.closest(".paperBody");
+    const abstract = body?.querySelector(".paperAbstract");
+    const isVisible = abstract?.classList.contains("is-visible");
+    btn.textContent = isVisible ? hideLabel : showLabel;
+    btn.setAttribute("aria-expanded", String(Boolean(isVisible)));
+    btn.classList.toggle("is-open", Boolean(isVisible));
+  });
+}
+
+function initPaperToggleButtons() {
+  $$(".paperToggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const body = btn.closest(".paperBody");
+      const abstract = body?.querySelector(".paperAbstract");
+      if (!abstract) return;
+      const isVisible = abstract.classList.toggle("is-visible");
+      btn.setAttribute("aria-expanded", String(isVisible));
+      updatePaperToggleButtons();
+    });
+  });
+  updatePaperToggleButtons();
 }
 
 const projectCards = $$(".projectCard");
@@ -493,6 +561,7 @@ const projectRepoSection = $("#project-repo-section");
 const projectRepoLink = $("#project-repo-link");
 const savedLang = localStorage.getItem("lang") || "ko";
 applyI18n(savedLang);
+initPaperToggleButtons();
 
 const projectModalData = {
   "iot-smart-home": {
