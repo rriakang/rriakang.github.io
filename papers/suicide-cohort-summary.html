@@ -7,7 +7,7 @@
   <meta name="description" content="자살시도 예측 모델 논문 요약 (준비중)" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="paperDetail">
   <div class="shell">
     <header class="topbar" role="banner" aria-label="Summary navigation">
       <a class="brand" href="/index.html#papers">← 논문 목록으로</a>
@@ -23,41 +23,38 @@
             <h2>Development and validation of short-term, medium-term, and long-term suicide attempt prediction models based on a prospective cohort in Korea</h2>
           </div>
         </div>
-        <div class="card">
+        <div class="card summaryBlock">
           <h3>서론</h3>
           <p class="muted">
             이 연구는 한국의 고위험군을 대상으로 <strong>단기(3개월), 중기(1년), 장기(1년 이상)</strong>라는 서로 다른
             시간에 맞춘 예측 모델을 개발·검증하여, 임상 의사결정에 더 직접적으로 연결될 수 있는 위험 예측 도구를 제시하는 것을 목표로 한다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 1. 데이터,설계: K-COMPASS cohort(국내 자살 고위험군 전향적 집단) + external validation</h3>
           <p class="muted">
             연구는 2015–2023년 동안 한국 5개 의료기관에서 수행된 전향적 코호트인 K-COMPASS 데이터를
             사용했으며, 고위험군 1,246명을 기반으로 예측 모델을 구축했다. 중요한 점은 내부 검증뿐 아니라
             <strong>새로운 환자의 코호트 기반 external validation</strong>을 수행해 일반화 가능성을 확인했다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 2. 모델링: 각 머신러닝들끼리 비교 </h3>
           <p class="muted">
             예측 목적을 단기(ex.3개월), 중기(ex. 1년), 장기로 나눴기 때문에 모델도 그에 맞게 설계하였다.
-          </p>
-          <p class="muted">
+           
             단기·중기는 “해당 기간 안에 자살시도가 발생할까?”를 맞추는 문제라서 Logistic Regression로 예측했다.
-          </p>
-          <p class="muted">
+           
             장기는 “언제 자살시도가 발생할까,발생 시점”까지 고려해야 하므로, 사건 발생 시간을 반영하는 Cox proportional hazards model을 사용했다.
-          </p>
-          <p class="muted">
+           
             여기에 Random Forest, XGBoost, Random Forest 등 머신러닝 모델을 함께 적용해 “Cox 모델 vs ML”
             성능과 일반화 특성을 비교했다. 또한 변수 선택을 더 객관화하고 과적합을 줄이려는 설계를 하였다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 3. 결과: 내부 검증 대비 외부 검증에서 성능 저하가 관찰되었으나, 과도한 성능 붕괴 없이 비교적 안정적인 일반화 성능을 확인했다.</h3>
           <p class="muted">
             핵심 결과는 내부에서는 매우 잘 맞지만, 외부에서 성능이 떨어진다라는 패턴이다(임상 예측에서 흔한 이슈라 한다.).
@@ -71,14 +68,13 @@
           <p class="muted">
             또한 주요 예측 요인으로 젊은 연령, 과거 자살시도, 우울·불안 같은 정신과 요인이 반복적으로 언급된다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>결론</h3>
           <p class="muted">
             단기(3개월)·중기(1년)·장기로 나눠 예측 모델을 설계하고, 전통적인 모델과 머신러닝을 함께 비교해 내부/외부 검증 성능을 체계적으로 제시했다는 점이 강점이다.
-          </p>
-          <p class="muted">
+           
             동시에 외부 검증에서 성능이 하락한 결과는, 실제 임상 적용에서 <strong>일반화</strong>와
             데이터 품질(data balance)이 얼마나 중요한지 보여준다.
           </p>

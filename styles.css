@@ -454,6 +454,9 @@ h3{
   gap: 12px;
 }
 .card p{ margin: 8px 0 0; color: var(--muted); }
+.paperDetail .card p{ margin: 12px 0 0; }
+.paperDetail .summaryBlock h3{ margin-top: 18px; }
+.paperDetail .summaryBlock h3:first-child{ margin-top: 0; }
 #values .card p{ white-space: pre-line; }
 
 .projectSlider{

@@ -7,7 +7,7 @@
   <meta name="description" content="정신과 병동 위험행동 예측 논문 요약" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="paperDetail">
   <div class="shell">
     <header class="topbar" role="banner" aria-label="Summary navigation">
       <a class="brand" href="/index.html#papers">← 논문 목록으로</a>
@@ -25,34 +25,33 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card summaryBlock">
           <h3>서론</h3>
           <p class="muted">
             정신과 폐쇄병동에서는 자살, 자해, 공격성과 같은 위험 행동을 조기에 감지하고
             개입하는 것이 환자와 의료진 안전에 직결된다. 그러나 현장에서는 높은 업무 강도와 인력 제약으로 인해
             위험 징후를 실시간으로 포착해 선제적으로 대응하기 어렵다. 기존 예측 접근은 주로 인구통계 및 기본
             임상 정보에 의존해 병동 내에서 시시각각 변화하는 상태를 실시간으로 충분히 반영하지 못하였으며, 정신병동 내에서의 위험 행동을 조기에 감지하는 논문은 존재하지않았다.
-          </p>
-          <p class="muted">
+           
             본 연구는 이러한 한계를 해결하기 위해 <strong>웨어러블 센서 데이터 + 위치 + 환자의 임상 정보 </strong>를
             통합한 multimodal 기반의 real-time risk prediction 모델을 제안하고, 정신과 병동 환경에서의 실효성을 검증한다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 1. 데이터 구성 및 문제 정의</h3>
           <p class="muted">
             3개 병원에서 145명 환자의 데이터를 수집했다. 웨어러블 디바이스를 통해 심박 수 ,
             움직임, 위치 정보를 확보했으며, 데이터는 <strong>시간 단위로 aggregation</strong>한 뒤
             결측치 처리 및 정규화 등 전처리를 수행했다. 예측 결과는 병동 내 위험 행동발생을 예측하는 binary classification으로 정의했다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 2. 모델링: Temporal Fusion Transformer 선택 이유</h3>
           <p class="muted">
             본 연구의 핵심은 <strong>Temporal Fusion Transformer, TFT 알고리즘</strong>을 적용했다는 점이다. TFT는 time-series
-            데이터와 정적인 데이터를 구조적으로 다루며,
+            데이터와 정적인 데이터를 구조적으로 다루며.
           </p>
           <ul class="bullets">
             <li>Variable Selection Networks 레이어로 중요한 변수를 선택하고</li>
@@ -62,9 +61,9 @@
             다변량 시계열이 동시 입력되는 환경에서, 센서·위치·임상 변수의 결합 패턴을 학습하기에 적합하다.
             또한 Bayesian optimization으로 하이퍼파라미터를 튜닝하고, 5-fold cross-validation으로 일반화 성능을 평가했다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>본론 3. 결과 및 해석 가능성</h3>
           <p class="muted">
             TFT는 비교 모델, [Multi-LSTM, Multi-GRU] 대비 우수한 성능을 보였고,제시된 지표는 다음과 같다:
@@ -80,16 +79,15 @@
             heart rate variability(HRV)과 같은 변수들이 핵심 예측 요인으로 나왔다. 이는 단순한 예측 정확도뿐 아니라,
             임상 현장에서 “왜 위험하다고 판단했는지”를 설명할 단서를 제공한다는 점에서 의미가 있다.
           </p>
-        </div>
+        
 
-        <div class="card">
+
           <h3>결론</h3>
           <p class="muted">
             본 연구는 정신과 병동에서 유해 행동을 예측하기 위해 Temporal Fusion Transformer 기반 multimodal real-time prediction을 적용한 사례로,
             센서·위치·임상 정보를 통합했을 때 실시간 위험도 평가가 가능해지고 예측 성능이 개선될 수 있음을 보였다.
             또한 VSN 기반 해석을 통해 임상적 활용 가능성을 높였다.
-          </p>
-          <p class="muted">
+           
             다만 초록에서도 언급하듯 데이터 규모가 제한적이어서 recall 향상은 향후 과제로 남아 있다.
           </p>
         </div>
