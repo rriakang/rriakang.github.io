@@ -26,46 +26,43 @@
         <div class="card">
           <h3>서론</h3>
           <p class="muted">
-            자살 시도(suicide attempt)는 임상 현장에서 즉각적인 개입이 필요한 고위험 사건이지만, 실제로는 위험 신호가
-            다양한 요인(인구통계, 과거력, 정신과 증상 등)과 얽혀 있어 단일 지표로 예측하기 어렵다. 이 연구는 한국의
-            고위험군(high-risk individuals)을 대상으로 <strong>단기(3개월), 중기(1년), 장기(long-term)</strong>라는 서로 다른
-            시간 지평(time horizon)에 맞춘 예측 모델을 개발·검증하여, 임상 의사결정에 더 직접적으로 연결될 수 있는
-            위험 예측 도구를 제시하는 것을 목표로 한다.
+            이 연구는 한국의 고위험군을 대상으로 <strong>단기(3개월), 중기(1년), 장기(1년 이상)</strong>라는 서로 다른
+            시간에 맞춘 예측 모델을 개발·검증하여, 임상 의사결정에 더 직접적으로 연결될 수 있는 위험 예측 도구를 제시하는 것을 목표로 한다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 1) 데이터/설계: K-COMPASS 전향적 코호트 + 외부 검증</h3>
+          <h3>본론 1. 데이터,설계: K-COMPASS cohort(국내 자살 고위험군 전향적 집단) + external validation</h3>
           <p class="muted">
-            연구는 2015–2023년 동안 한국 5개 의료기관에서 수행된 전향적(prospective) 코호트인 K-COMPASS 데이터를
+            연구는 2015–2023년 동안 한국 5개 의료기관에서 수행된 전향적 코호트인 K-COMPASS 데이터를
             사용했으며, 고위험군 1,246명을 기반으로 예측 모델을 구축했다. 중요한 점은 내부 검증뿐 아니라
-            <strong>독립 코호트 기반 외부 검증(external validation)</strong>을 수행해 일반화 가능성을 확인했다는 것이다.
+            <strong>새로운 환자의 코호트 기반 external validation</strong>을 수행해 일반화 가능성을 확인했다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 2) 모델링: 전통 통계 + 머신러닝 비교(분류/생존모형)</h3>
+          <h3>본론 2. 모델링: 각 머신러닝들끼리 비교 </h3>
           <p class="muted">
-            시간 구간별 목표에 맞춰 모델이 구성된다. 단기/중기는 Logistic Regression(분류) 기반 모델을 포함하고,
-            장기는 사건 발생까지의 시간을 반영하기 위해 Cox proportional hazards model(생존모형)을 사용한다.
+            예측 목적을 단기(ex.3개월), 중기(ex. 1년), 장기로 나눴기 때문에 모델도 그에 맞게 설계하였다.
+            단기·중기는 “해당 기간 안에 자살시도가 발생할까?”를 맞추는 문제라서 Logistic Regression로 예측했다.
+            장기는 “언제 자살시도가 발생할까,발생 시점”까지 고려해야 하므로, 사건 발생 시간을 반영하는 Cox proportional hazards model을 사용했다.
           </p>
           <p class="muted">
-            여기에 Random Forest, XGBoost, Random Survival Forest 등 머신러닝 모델을 함께 적용해 “전통 통계 vs ML”
-            성능과 일반화 특성을 비교했다. 또한 변수 선택을 더 객관화하고(time-dependent validation 등) 과적합을 줄이려는
-            설계를 강조한다.
+            여기에 Random Forest, XGBoost, Random Forest 등 머신러닝 모델을 함께 적용해 “Cox 모델 vs ML”
+            성능과 일반화 특성을 비교했다. 또한 변수 선택을 더 객관화하고 과적합을 줄이려는 설계를 하였다.
           </p>
         </div>
 
         <div class="card">
-          <h3>본론 3) 결과: 내부 성능은 높고, 외부 검증에서 하락(그래도 ‘수용 가능한’ 수준)</h3>
+          <h3>본론 3. 결과: 내부 검증 대비 외부 검증에서 성능 저하가 관찰되었으나, 과도한 성능 붕괴 없이 비교적 안정적인 일반화 성능을 확인했다.</h3>
           <p class="muted">
-            핵심 결과는 “내부에서는 매우 잘 맞지만, 외부에서 성능이 떨어진다”는 패턴이다(임상 예측에서 흔한 이슈).
+            핵심 결과는 내부에서는 매우 잘 맞지만, 외부에서 성능이 떨어진다라는 패턴이다(임상 예측에서 흔한 이슈라 한다.).
           </p>
           <ul class="bullets">
-            <li>단기/중기 Logistic Regression: training/internal AUC 0.7461–0.8708 → 외부 AUC 0.5958–0.7051</li>
-            <li>머신러닝: training/internal AUC 0.8454–1.0000 → 외부 AUC 0.5948–0.7030</li>
-            <li>Cox 모델: c-index 0.780–0.786(학습) → 0.632–0.663(외부)</li>
-            <li>Random Survival Forest: 0.668–0.706(학습) / 0.633–0.721(외부)</li>
+            <li>단기/중기 Logistic Regression: training|internal AUC 0.7461–0.8708 / external AUC 0.5958–0.7051</li>
+            <li>머신러닝: training|internal AUC 0.8454–1.0000 / external : AUC 0.5948–0.7030</li>
+            <li>Cox 모델:training|internal 0.780–0.786 / external : 0.632–0.663</li>
+            <li>Random Forest: training|internal 0.668–0.706 / external : 0.633–0.721</li>
           </ul>
           <p class="muted">
             또한 주요 예측 요인으로 젊은 연령, 과거 자살시도, 우울·불안 같은 정신과 요인이 반복적으로 언급된다.
@@ -75,14 +72,11 @@
         <div class="card">
           <h3>결론</h3>
           <p class="muted">
-            이 연구의 메시지는 명확하다. 단기(3개월)·중기(1년)·장기로 나눠 예측 모델을 설계하고, 전통 통계 모델과
-            머신러닝을 함께 비교해 내부/외부 검증 성능을 체계적으로 제시했다는 점이 강점이다.
+            단기(3개월)·중기(1년)·장기로 나눠 예측 모델을 설계하고, 전통적인 모델과 머신러닝을 함께 비교해 내부/외부 검증 성능을 체계적으로 제시했다는 점이 강점이다.
           </p>
           <p class="muted">
-            동시에 외부 검증에서 성능이 하락한 결과는, 실제 임상 적용에서 <strong>일반화(generalizability)</strong>와
-            데이터 품질(예: self-report 의존, 약물 정보 누락 등)이 얼마나 중요한지 보여준다. 따라서 이 논문은 “모델을
-            잘 만드는 것”뿐 아니라 “현장에 적용 가능한 예측모델의 조건(외부 검증, 변수 정의, 데이터 표준화)”을 정리한
-            근거로 포트폴리오에서 가치가 크다.
+            동시에 외부 검증에서 성능이 하락한 결과는, 실제 임상 적용에서 <strong>일반화</strong>와
+            데이터 품질(data balance)이 얼마나 중요한지 보여준다.
           </p>
         </div>
       </section>
