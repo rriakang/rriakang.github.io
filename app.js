@@ -132,7 +132,7 @@ const I18N = {
       "모델 성능이 잘 나왔을 때도 저는 먼저 원인을 확인합니다. 우연, 데이터 누수, 분포 편향, 특정 집단에만 유리한 학습 등으로 인해 겉보기 성능이 좋아 보일 수 있기 때문입니다.\n\n그래서 좋은 결과가 나올수록 교차검증, 시간 기준 분리, 외부 검증, 에러 분석을 통해 일반화 가능성을 점검하고, 실험 설정과 전처리 과정의 타당성을 다시 확인합니다.\n\n저는 이 습관이 단기적인 점수보다 장기적으로 신뢰할 수 있는 모델을 만든다고 믿습니다.",
     projects_title: "프로젝트",
     projects_desc: "핵심 문제, 나의 역할, 검증 방식(지표/프로토콜)을 중심으로 정리했습니다.",
-    project_title_platform: "웨어러블·임상 통합 정신증상/자타해 위험 모니터링 플랫폼",
+    project_title_platform: "웨어러블·임상 데이터 기반 정신증상/자·타해 위험 모니터링 플랫폼 연동",
     project_title_multimodal: "정신과 병동 위험행동 예측 (Real-time Risk Prediction)",
     project_title_wearable: "웨어러블 기반 증상 악화/중증도 예측 (Multi-task)",
     project_title_cohort: "코호트 기반 자살시도 위험 예측 (단·중·장기)",
@@ -539,12 +539,12 @@ const projectModalData = {
     title: "웨어러블·임상 데이터 기반 정신증상/자·타해 위험 모니터링 플랫폼 연동",
     summary:
       "정부 지원 과제의 일환으로 웨어러블 데이터와 임상 정보를 통합 수집·정제하고, 이를 기반으로 정신증상 악화 및 자·타해 위험을 예측/모니터링하여 의료진에게 제공하는 시스템을 목표로 수행했습니다.",
-    role: "정신증상 악화 예측 모델과 자·타해 위험 예측 모델을 개발하고, Flask 기반 Inference API 및 PyPI 패키지 형태로 배포해 모기업 플랫폼과 연동을 완료했습니다.",
+    role: "정신증상 악화 예측 모델과 자·타해 위험 예측 모델(분류)을 개발하고, Flask 기반 Inference API 및 PyPI 패키지 형태로 배포해 모기업 플랫폼과 연동을 완료했습니다.",
     background:
-      "상용 환경에서 활용 가능한 형태로 예측 결과를 제공하기 위해 백엔드와 API 명세·JSON 스키마을 정의하고, 플랫폼에서 신규 환자 데이터로 예측을 호출·출력하는 흐름을 설계했습니다.",
+      "상용 환경에서 활용 가능한 형태로 예측 결과를 제공하기 위해 백엔드와 데이터 계약(API 명세/JSON 스키마)을 정의하고, 플랫폼에서 신규 환자 데이터로 예측을 호출·출력하는 흐름을 설계했습니다.",
     highlights: [
       "웨어러블 데이터·임상 변수 통합 전처리 및 학습 데이터셋 구성",
-      "정신증상 악화 및 자·타해 위험 예측·모니터링·알림 흐름 정의",
+      "정신증상 악화 및 자·타해 위험 예측/모니터링·알림 흐름 정의",
       "Flask 기반 Inference API 서비스화 및 PyPI 패키지 배포",
       "플랫폼 연동을 위한 API 명세 및 JSON 스키마 정의",
     ],
@@ -750,68 +750,70 @@ const projectModalData = {
 const PROJECT_I18N = {
   "risk-monitor-platform": {
     ko: {
-      title: "웨어러블·임상 통합 정신증상/자타해 위험 모니터링 플랫폼",
+      title: "웨어러블·임상 데이터 기반 정신증상/자·타해 위험 모니터링 플랫폼 연동",
       summary:
-        "정부 지원 과제의 일환으로 웨어러블 디바이스와 임상 정보를 통합 수집하고, 이를 기반으로 정신증상 및 자타해 위험을 모니터링하고 알리는 플랫폼 구축을 목표로 하였습니다.",
+        "정부 지원 과제의 일환으로 웨어러블 데이터와 임상 정보를 통합 수집·정제하고, 이를 기반으로 정신증상 악화 및 자·타해 위험을 예측/모니터링하여 의료진에게 제공하는 시스템을 목표로 수행했습니다.",
       role:
-        "자타해 예측 모델과 환자 증상 예측 모델을 구축하여 FastAPI와 PyPI 라이브러리 등록으로 모기업이 구축한 플랫폼과 연동했습니다.",
+        "정신증상 악화 예측 모델과 자·타해 위험 예측 모델(분류)을 개발하고, Flask 기반 Inference API 및 PyPI 패키지 형태로 배포해 모기업 플랫폼과 연동을 완료했습니다.",
       background:
-        "정부 지원 과제의 일환으로 웨어러블 디바이스와 임상 정보를 통합 수집하고, 이를 기반으로 정신증상 및 자타해 위험을 모니터링하고 알리는 플랫폼 구축을 목표로 하였습니다.",
+        "상용 환경에서 활용 가능한 형태로 예측 결과를 제공하기 위해 백엔드와 데이터 계약(API 명세/JSON 스키마)을 정의하고, 플랫폼에서 신규 환자 데이터로 예측을 호출·출력하는 흐름을 설계했습니다.",
       highlights: [
-        "웨어러블·임상 정보 통합 수집 파이프라인 구성",
-        "정신증상,자타해 위험 모니터링 및 알림 흐름 정의",
-        "FastAPI 기반 서비스화 및 PyPI 라이브러리 등록",
-        "플랫폼과 API 연동",
+        "웨어러블 데이터·임상 변수 통합 전처리 및 학습 데이터셋 구성",
+        "정신증상 악화 및 자·타해 위험 예측/모니터링·알림 흐름 정의",
+        "Flask 기반 Inference API 서비스화 및 PyPI 패키지 배포",
+        "플랫폼 연동을 위한 API 명세 및 JSON 스키마 정의",
       ],
-      tech: "Python, FastAPI, PyPI, REST API, Wearable, Clinical Data",
+      tech: "Python, Flask, PyPI, REST API, JSON Schema, Wearable Data, Clinical Variables",
     },
     en: {
-      title: "Wearable + Clinical Integrated Mental Symptom / Self-Harm Risk Monitoring Platform",
+      title:
+        "Wearable + Clinical Data-Based Psychiatric Symptom / Self-Other Harm Risk Monitoring Platform Integration",
       summary:
-        "As part of a government-funded project, we integrated wearable devices and clinical data to build a platform that monitors and alerts on psychiatric symptoms and self/other-harm risk.",
+        "As part of a government-funded project, we integrated and cleaned wearable data and clinical information, and built a system to predict/monitor symptom deterioration and self/other-harm risk for clinicians.",
       role:
-        "Built self/other-harm and symptom prediction models and integrated them with the parent company's platform via FastAPI and a PyPI package.",
+        "Developed symptom deterioration and self/other-harm risk classification models, and deployed a Flask-based inference API and PyPI package to integrate with the parent company's platform.",
       background:
-        "As part of a government-funded project, we integrated wearable devices and clinical data to build a platform that monitors and alerts on psychiatric symptoms and self/other-harm risk.",
+        "To deliver predictions in a production setting, we defined backend and data contracts (API specs/JSON schemas) and designed the flow for calling and displaying predictions with new patient data.",
       highlights: [
-        "Built an integrated pipeline for wearable + clinical data collection",
-        "Defined monitoring and alert flow for psychiatric symptoms and self/other-harm risk",
-        "Productized with FastAPI and published a PyPI package",
-        "Integrated via platform API",
+        "Integrated preprocessing for wearable data and clinical variables",
+        "Defined prediction/monitoring/alert flow for symptom deterioration and self/other-harm risk",
+        "Productized with a Flask-based inference API and PyPI package",
+        "Defined API specs and JSON schema for platform integration",
       ],
-      tech: "Python, FastAPI, PyPI, REST API, Wearable, Clinical Data",
+      tech: "Python, Flask, PyPI, REST API, JSON Schema, Wearable Data, Clinical Variables",
     },
     zh: {
-      title: "可穿戴与临床信息整合的精神症状/自他伤风险监测平台",
+      title: "基于可穿戴与临床数据的精神症状/自他伤风险监测平台对接",
       summary:
-        "作为政府支持课题的一部分，整合采集可穿戴设备与临床信息，构建用于监测并提醒精神症状及自他伤风险的平台。",
+        "作为政府支持课题的一部分，整合并清洗可穿戴数据与临床信息，用于预测/监测精神症状恶化与自他伤风险，并向医护提供结果。",
       role:
-        "构建自他伤预测与患者症状预测模型，并通过 FastAPI 与 PyPI 包与母公司平台对接。",
+        "构建精神症状恶化与自他伤风险分类模型，并通过 Flask 推理 API 与 PyPI 包完成母公司平台对接。",
       background:
-        "作为政府支持课题的一部分，整合采集可穿戴设备与临床信息，构建用于监测并提醒精神症状及自他伤风险的平台。",
+        "为在商用环境中提供预测结果，定义后端与数据契约（API 规范/JSON Schema），并设计平台调用与展示预测的流程。",
       highlights: [
-        "构建可穿戴与临床信息整合采集管线",
-        "定义精神症状、自他伤风险的监测与提醒流程",
-        "基于 FastAPI 服务化并发布 PyPI 包",
-        "与平台 API 对接",
+        "整合可穿戴数据与临床变量的预处理与数据集构建",
+        "定义精神症状恶化及自他伤风险的预测/监测/告警流程",
+        "Flask 推理 API 服务化与 PyPI 包发布",
+        "平台对接所需的 API 规范与 JSON Schema 定义",
       ],
-      tech: "Python, FastAPI, PyPI, REST API, Wearable, Clinical Data",
+      tech: "Python, Flask, PyPI, REST API, JSON Schema, Wearable Data, Clinical Variables",
     },
     ja: {
-      title: "ウェアラブル・臨床統合の精神症状/自他害リスクモニタリングプラットフォーム",
+      title:
+        "ウェアラブル・臨床データに基づく精神症状/自他害リスクモニタリングプラットフォーム連携",
       summary:
-        "政府支援課題の一環として、ウェアラブル機器と臨床情報を統合収集し、精神症状と自他害リスクを監視・通知するプラットフォーム構築を目指しました。",
+        "政府支援課題の一環として、ウェアラブルデータと臨床情報を統合・精製し、精神症状の悪化と自他害リスクを予測/モニタリングして医療者に提供するシステムを目指しました。",
       role:
-        "自他害予測モデルと症状予測モデルを構築し、FastAPI と PyPI パッケージで親会社プラットフォームと連携しました。",
+        "精神症状悪化と自他害リスクの分類モデルを開発し、Flask ベースの推論 API と PyPI パッケージで親会社プラットフォームと連携しました。",
       background:
-        "政府支援課題の一環として、ウェアラブル機器と臨床情報を統合収集し、精神症状と自他害リスクを監視・通知するプラットフォーム構築を目指しました。",
+        "商用環境で予測結果を提供するため、バックエンドとデータ契約（API 仕様/JSON スキーマ）を定義し、新規患者データで予測を呼び出して表示するフローを設計しました。",
       highlights: [
-        "ウェアラブル・臨床情報の統合収集パイプライン構築",
-        "精神症状・自他害リスクの監視/通知フロー定義",
-        "FastAPI でサービス化し PyPI パッケージを公開",
-        "プラットフォーム API 連携",
+        "ウェアラブルデータ・臨床変数の統合前処理と学習データセット構成",
+        "精神症状悪化/自他害リスクの予測・モニタリング・アラートフロー定義",
+        "Flask ベース推論 API のサービス化と PyPI パッケージ配布",
+        "連携用 API 仕様と JSON スキーマ定義",
       ],
-      tech: "Python, FastAPI, PyPI, REST API, Wearable, Clinical Data",
+      tech: "Python, Flask, PyPI, REST API, JSON Schema, Wearable Data, Clinical Variables",
     },
   },
   "multimodal-risk": {
