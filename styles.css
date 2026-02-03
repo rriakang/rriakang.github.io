@@ -465,8 +465,8 @@ h3{
 }
 .paperDetail .summaryBlock .bullets{ margin: 12px 0 0; }
 .paperDetail .summaryBlock h3{
-  margin-top: 28px;
-  font-size: 21px;
+  margin-top: 26px;
+  font-size: 19px;
   line-height: 1.25;
 }
 .paperDetail .summaryBlock h3:first-child{ margin-top: 0; }
